@@ -20,8 +20,6 @@ return new class extends Migration
             $table->longText('description');
             $table->integer('is_publishing')->default(0);
             $table->timestamps();
-
-            $table->foreignId('user_id')->constrained();
         });
         // Schema::rename('verbs', 'posts');
     }

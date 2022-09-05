@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -68,3 +69,32 @@ Route::get('/dashboard', function () {
         }
     });
 }
+
+//post
+
+{
+    Route::get('/form', function () {
+        return view('posts.create');
+    });
+
+    Route::get('post/createme', [PostController::class, 'create'])->name('posts.create');
+
+    Route::post('post', [PostController::class, 'store'])->name('posts.store');
+}
+
+//get
+//model name is post
+
+Route::get('fetchtest', function () {
+
+
+    // return Post::find(6);
+
+    // return Post::where('title', 'LIKE', '%ghoster%')->first();
+
+    // return Post::where('title', 'ghoster')->orWhere('description', 'a')->first();
+
+    // return Post::where('title', 'Laravel')->first();
+
+    return Post::where('title', 'ghoster')->get();
+});
